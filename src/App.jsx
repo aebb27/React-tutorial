@@ -1,25 +1,29 @@
-import { getImageUrl } from './utils.js';
-
-function Avatar({ person, size }) {
+function Card ({ children, title}) {
   return (
-    <img
-      className="avatar"
-      src={size < 90 ? getImageUrl(person, 's') : getImageUrl(person, 'b')}
-      alt={person.name}
-      width={size}
-      height={size}
-    />
+    <div className="card">
+      <div className="card-content">
+        <h1>{title}</h1>
+        {children}
+      </div>
+    </div>
   );
 }
 
 export default function Profile() {
   return (
-    <Avatar
-      size={40}
-      person={{ 
-        name: 'Gregorio Y. Zara', 
-        imageId: '7vQD0fP'
-      }}
-    />
+    <div>
+      <Card title="Photo">
+        <img
+          className="avatar"
+          src="https://i.imgur.com/OKS67lhm.jpg"
+          alt="Aklilu Lemma"
+          width={70}
+          height={70}
+        />
+      </Card>
+      <Card title="About">
+        <p>Aklilu Lemma was a distinguished Ethiopian scientist who discovered a natural treatment to schistosomiasis.</p>
+      </Card>
+    </div>
   );
 }
