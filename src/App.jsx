@@ -1,29 +1,22 @@
-function Card ({ children, title}) {
-  return (
-    <div className="card">
-      <div className="card-content">
-        <h1>{title}</h1>
-        {children}
-      </div>
-    </div>
-  );
-}
+import { people } from './data.js'
+import { getImageUrl } from './utils.js'
 
-export default function Profile() {
-  return (
-    <div>
-      <Card title="Photo">
+
+export default function List () {
+  const chemists = people.filter(person => person.profession === 'chemist')
+
+  const listItems = chemists.map(chemist => 
+      <li key={chemist.id}>
         <img
-          className="avatar"
-          src="https://i.imgur.com/OKS67lhm.jpg"
-          alt="Aklilu Lemma"
-          width={70}
-          height={70}
+          src={getImageUrl(chemist)}
+          alt={chemist.name}
         />
-      </Card>
-      <Card title="About">
-        <p>Aklilu Lemma was a distinguished Ethiopian scientist who discovered a natural treatment to schistosomiasis.</p>
-      </Card>
-    </div>
-  );
+        <p>
+          <b>{chemist.name}</b>
+          {' ' + chemist.profession + ' '}
+          known for {chemist.accomplishment}
+        </p>
+      </li>
+  )
+  return <ul>{listItems}</ul> 
 }
