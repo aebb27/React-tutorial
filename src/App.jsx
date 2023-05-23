@@ -1,7 +1,6 @@
 import { recipes } from './recipes-data.js'
 
-function ListIngredients({ recipe }) {
-  const { name, ingredients } = recipe
+function Recipe({ id, name, ingredients }) {
   return (
     <article>
       <h2>{name}</h2>
@@ -19,7 +18,7 @@ export default function RecipeList() {
     <div>
       <h1>Recipes</h1>
       {recipes.map(recipe =>
-        <ListIngredients key={recipe.id} recipe={recipe} />
+        <Recipe key={recipe.id} {...recipe} />
       )}
     </div>
   )
