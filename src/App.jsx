@@ -1,25 +1,22 @@
-import { recipes } from './recipes-data.js'
+import { Fragment } from 'react'
 
-function Recipe({ id, name, ingredients }) {
+const poem = {
+  lines: [
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
+  ]
+};
+
+export default function Poem() {
   return (
     <article>
-      <h2>{name}</h2>
-      <ul>
-        {ingredients.map(({id, name}) =>
-          <li key={id}>{name}</li>
-        )}
-      </ul>
-    </article>
-  )
-}
-
-export default function RecipeList() {
-  return (
-    <div>
-      <h1>Recipes</h1>
-      {recipes.map(recipe =>
-        <Recipe key={recipe.id} {...recipe} />
+      {poem.lines.map((line, index) =>
+        <Fragment key={index}>
+          {index > 0 && <hr />} {/* If index > 0 is true then (&&) <hr /> will render, otherwise nothing will render */}
+          <p>{line}</p>
+        </Fragment>
       )}
-    </div>
-  )
+    </article>
+  );
 }
