@@ -1,22 +1,20 @@
-import { Fragment } from 'react'
-
-const poem = {
-  lines: [
-    'I write, erase, rewrite',
-    'Erase again, and then',
-    'A poppy blooms.'
-  ]
-};
-
-export default function Poem() {
+function Item({ name, isPacked }) {
   return (
-    <article>
-      {poem.lines.map((line, index) =>
-        <Fragment key={index}>
-          {index > 0 && <hr />} {/* If index > 0 is true then (&&) <hr /> will render, otherwise nothing will render */}
-          <p>{line}</p>
-        </Fragment>
-      )}
-    </article>
-  );
+    isPacked
+      ? <li>{name} ✔</li>
+      : <li>{name} </li>
+  )
+}
+
+export default function PackingList() {
+  return (
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+        <Item isPacked={true} name="Space suit" />
+        <Item isPacked={true} name="Helmet with a golden leaf" />
+        <Item isPacked={false} name="Photo of Tam" />
+      </ul>
+    </section>
+  )
 }
