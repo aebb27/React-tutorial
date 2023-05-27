@@ -1,14 +1,6 @@
 function Item({ name, isPacked }) {
   return (
-    <li>
-      {isPacked ? (
-        <del>
-          {name + ' ✔'}
-        </del>
-      ) : (
-        name
-      )}
-    </li>
+    <li>{name} {isPacked && ' ✔'}</li> {/* This is read as If isPacked then render the checkmark, otherwise, render nothing */}
   )
 }
 
