@@ -1,16 +1,11 @@
 function Item({ name, isPacked }) {
-  let itemContent = name
-  if (isPacked) {
-    itemContent = (
-      <del>
-        {name + ' ✔'}
-      </del>
-    )
-  }
   return (
-    <li>{itemContent}</li>
+    <li>
+      {name} {isPacked ? '✔' : '❌'}
+    </li>
   )
 }
+  
 
 export default function PackingList() {
   return (
