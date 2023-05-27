@@ -1,8 +1,8 @@
 function Item({ name, isPacked }) {
   return (
     isPacked
-      ? <li>{name} ✔</li>
-      : <li>{name} </li>
+      ? null
+      : <li>{name}</li>
   )
 }
 
