@@ -1,13 +1,14 @@
-import { useState } from 'react'
+function AlertButton({ message, children }) {  
+  return (
+    <button onClick={() => alert(message)}>{children}</button>
+  )
+}
 
-export default function FeedbackForm() {
-  
-  function handleClick() {
-    const name = prompt('What is your name?')
-    alert(`Hello, ${name}!`)
-  }
-
-  return(
-    <button onClick={handleClick}>Greet</button>
+export default function Toolbar() {
+  return (
+    <div>
+      <AlertButton message="Playing!">Play movie</AlertButton>
+      <AlertButton message="Uploading!">Upload Image</AlertButton>
+    </div>
   )
 }
