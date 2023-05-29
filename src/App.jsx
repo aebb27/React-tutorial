@@ -1,38 +1,32 @@
-const DRINKS = {
-    tea: {
-      part: 'leaf',
-      caffeine: '15-70 mg/cup',
-      age: '4,000+ years'
-    },
-    coffee: {
-      part: 'bean',
-      caffeine: '80-185 mg/cup',
-      age: '1,000+ years'
-    }
+import { useState } from 'react'
+import { sculptureList } from './sculpture-data.js'
+
+export default function Gallery() {
+  const [index, setIndex] = useState(0)
+
+  function next() {
+    setIndex(index + 1)
   }
 
-function Drink({ name }) {
-  const info = DRINKS[name]
-  return (
-    <section>
-      <h1>{name}</h1>
-      <dl>
-        <dt>Part of plant</dt>
-        <dd>{info.part}</dd>
-        <dt>Caffeine content</dt>
-        <dd>{info.caffeine}</dd>
-        <dt>Age</dt>
-        <dd>{info.age}</dd>
-      </dl>
-    </section>
-  )
-}
+  function previous() {
+    setIndex(index - 1)
+  }
 
-export default function DrinkList() {
+  let sculpture = sculptureList[index]
+
   return (
-    <div>
-      <Drink name="tea" />
-      <Drink name="coffee" />
-    </div>
+    <>
+      <button onClick={previous}>Previous</button>
+      <button onClick={next}>Next</button>
+      <h2>
+        <i>{sculpture.name} </i> by {sculpture.artist}
+      </h2>
+      <h3>({index + 1} of {sculptureList.length})</h3>
+      <img
+        src={sculpture.url}
+        alt={sculpture.alt}
+      />
+      <p>{sculpture.description}</p>
+    </>
   )
 }
