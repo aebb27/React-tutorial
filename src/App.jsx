@@ -3,6 +3,7 @@ import { sculptureList } from './sculpture-data.js'
 
 export default function Gallery() {
   const [index, setIndex] = useState(0)
+  const [showMore, setShowMore] = useState(false)
 
   function next() {
     setIndex(index + 1)
@@ -10,6 +11,10 @@ export default function Gallery() {
 
   function previous() {
     setIndex(index - 1)
+  }
+
+  function handleClick() {
+    setShowMore(!showMore)
   }
 
   let sculpture = sculptureList[index]
@@ -22,11 +27,14 @@ export default function Gallery() {
         <i>{sculpture.name} </i> by {sculpture.artist}
       </h2>
       <h3>({index + 1} of {sculptureList.length})</h3>
+      <button onClick={handleClick}>
+        {showMore ? 'Hide' : 'Show'} details
+      </button>
+      {showMore && <p>{sculpture.description}</p>}
       <img
         src={sculpture.url}
         alt={sculpture.alt}
       />
-      <p>{sculpture.description}</p>
     </>
   )
 }
